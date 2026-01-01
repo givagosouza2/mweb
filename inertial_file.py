@@ -87,19 +87,12 @@ def render():
         st.info("Selecione um arquivo para iniciar.")
         return
 
-    # ✅ Não processar automaticamente: evita travar no mobile
-    process = st.button("Processar e Plotar", type="primary", use_container_width=True)
-
     # Mantém bytes em session_state para sobreviver a reruns
     if "inertial_raw" not in st.session_state:
         st.session_state.inertial_raw = None
 
     if uploaded is not None:
         st.session_state.inertial_raw = uploaded.getvalue()
-
-    if not process:
-        st.caption("Dica: no celular, clique em **Processar e Plotar** depois do upload para evitar timeout.")
-        return
 
     raw = st.session_state.inertial_raw
     if not raw:
