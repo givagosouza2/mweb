@@ -14,7 +14,7 @@ def main():
 
     st.write("Clique no módulo que deseja abrir:")
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(6)
 
     with col1:
         # Troque pelo caminho da sua imagem (ex.: assets/gyro.png)
