@@ -87,8 +87,7 @@ def render():
     x = x[valid].to_numpy(float)
     y = y[valid].to_numpy(float)
     z = z[valid].to_numpy(float)
-
-    time_in_ms = st.checkbox("Tempo está em milissegundos (converter para segundos)", value=False)
+    
     t = t / 1000.0
 
     # cálculo da norma
@@ -102,10 +101,3 @@ def render():
 
     st.subheader("Norma √(X² + Y² + Z²) em função do tempo")
     st.line_chart(plot_df, x="Tempo", y="Norma", use_container_width=True)
-
-    # métricas
-    st.subheader("Resumo")
-    st.write(f"N amostras: **{len(norm)}**")
-    st.write(f"Norma média: **{np.mean(norm):.5f}**")
-    st.write(f"Norma RMS: **{np.sqrt(np.mean(norm**2)):.5f}**")
-    st.write(f"Norma máx: **{np.max(norm):.5f}**")
