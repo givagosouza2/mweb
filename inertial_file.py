@@ -128,10 +128,9 @@ def render():
 
     plot1, plot2, plot3 = st.columns(3)
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=t_plot, y=x_plot, name="X"))
-    fig.add_trace(go.Scatter(x=t_plot, y=y_plot, name="Y"))
-    fig.add_trace(go.Scatter(x=t_plot, y=z_plot, name="Z"))
-    fig.add_trace(go.Scatter(x=t_plot, y=norm_plot, name="Norma", line=dict(width=3)))
+    fig.add_trace(go.Scatter(x=t_sec, y=x, name="X"))
+    fig.add_trace(go.Scatter(x=t_sec, y=y, name="Y"))
+    fig.add_trace(go.Scatter(x=t_sec, y=z, name="Z"))
     
     fig.update_layout(
         xaxis_title="Tempo (s)",
