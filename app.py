@@ -47,9 +47,9 @@ def main():
     col1, col2 = st.columns([0.4, 2])
 
     with col1:
-        if st.button("Home", use_container_width=True):
+        if st.button("Home", width='stretch'):
             st.session_state.active_module = "home"
-        if st.button("Sensor Inercial", use_container_width=True):
+        if st.button("Sensor Inercial", width='stretch'):
             st.session_state.active_module = "inertial_rec"
 
     with col2:
