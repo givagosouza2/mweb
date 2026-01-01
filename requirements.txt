@@ -1,3 +1,6 @@
 importlib
 streamlit
 pandas
+numpy
+matplotlib
+
