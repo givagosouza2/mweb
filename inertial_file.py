@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 
 # -----------------------------
-# Utilitários de leitura (mobile-safe)
+# Utilitários de leitura 
 # -----------------------------
 def _decode_bytes(raw: bytes) -> str:
     """Decodifica bytes em texto tentando encodings comuns."""
