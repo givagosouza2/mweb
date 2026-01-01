@@ -49,10 +49,7 @@ def render():
         st.error(f"Erro ao ler o arquivo: {e}")
         return
 
-    # ✅ Mostra o que realmente foi importado
-    with st.expander("Ver dados importados (debug)", expanded=True):
-        st.write("Colunas detectadas:", list(df.columns))
-        st.dataframe(df.head(30), use_container_width=True)
+    
 
     # tenta usar o padrão Tempo, X, Y, Z
     default_map = {"Tempo": None, "X": None, "Y": None, "Z": None}
@@ -60,20 +57,16 @@ def render():
         if k in df.columns:
             default_map[k] = k
 
-    # ✅ Se não bater, deixa escolher manualmente
-    st.write("Seleção de colunas:")
-    cols = list(df.columns)
-
     time_col = st.selectbox("Tempo", cols, index=cols.index(default_map["Tempo"]) if default_map["Tempo"] in cols else 0)
     x_col = st.selectbox("X", cols, index=cols.index(default_map["X"]) if default_map["X"] in cols else min(1, len(cols)-1))
     y_col = st.selectbox("Y", cols, index=cols.index(default_map["Y"]) if default_map["Y"] in cols else min(2, len(cols)-1))
     z_col = st.selectbox("Z", cols, index=cols.index(default_map["Z"]) if default_map["Z"] in cols else min(3, len(cols)-1))
 
     # conversão numérica
-    t = pd.to_numeric(df[time_col], errors="coerce")
-    x = pd.to_numeric(df[x_col], errors="coerce")
-    y = pd.to_numeric(df[y_col], errors="coerce")
-    z = pd.to_numeric(df[z_col], errors="coerce")
+    t = pd.to_numeric(df["Tempo"], errors="coerce")
+    x = pd.to_numeric(df["X"], errors="coerce")
+    y = pd.to_numeric(df["Y"], errors="coerce")
+    z = pd.to_numeric(df["Z"], errors="coerce")
 
     valid = t.notna() & x.notna() & y.notna() & z.notna()
     if valid.sum() < 5:
@@ -85,15 +78,9 @@ def render():
     y = y[valid].to_numpy(float)
     z = z[valid].to_numpy(float)
 
-    # opcional: ms -> s
-    if st.checkbox("Tempo em milissegundos (converter para s)", value=False, key="gyro_ms"):
-        t = t / 1000.0
+    t = t / 1000.0
 
     norm = np.sqrt(x**2 + y**2 + z**2)
 
     plot_df = pd.DataFrame({"Tempo": t, "Norma": norm})
     st.line_chart(plot_df, x="Tempo", y="Norma", use_container_width=True)
-
-    st.caption(
-        f"N={len(norm)} | Média={norm.mean():.4f} | RMS={np.sqrt((norm**2).mean()):.4f}"
-    )
