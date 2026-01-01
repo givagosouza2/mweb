@@ -9,7 +9,7 @@ def main():
         st.session_state.active_module = "home"
 
     # --- HUB com botão (imagem + botão) ---
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([0.4, 2])
 
     with col1:
         st.image("b1.png", width=220)
