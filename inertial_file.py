@@ -113,12 +113,6 @@ def render():
         st.error(f"Erro ao ler/processar o arquivo: {e}")
         return
 
-    # Debug opcional
-    with st.expander("Debug (opcional)", expanded=False):
-        st.write("Tamanho (bytes):", len(raw))
-        st.write("Linhas válidas:", df.shape[0])
-        st.dataframe(df.head(25), use_container_width=True)
-
     # Conversão numérica (agora por colunas nomeadas, já limpas)
     t = _to_float_series(df["Tempo"])
     x = _to_float_series(df["X"])
