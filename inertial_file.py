@@ -2,7 +2,7 @@ import io
 import numpy as np
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
+
 
 
 def read_csv_clean(uploaded_file) -> pd.DataFrame:
