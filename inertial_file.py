@@ -126,7 +126,6 @@ def render():
     
     t_sec = t / 1000.0
 
-    plot1, plot2, plot3 = st.columns(3)
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=t_sec, y=x, name="X"))
     fig.add_trace(go.Scatter(x=t_sec, y=y, name="Y"))
