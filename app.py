@@ -23,7 +23,7 @@ def main():
     unsafe_allow_html=True
     )
     
-    st.image("mweb.png",use_container_width=False
+    st.image("mweb.png",use_container_width=True
     )
 
     if "active_module" not in st.session_state:
