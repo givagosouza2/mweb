@@ -12,13 +12,13 @@ def main():
     col1, col2 = st.columns([0.4, 2])
 
     with col1:
-        st.image("b1.png", width=220)
-        if st.button("Sensor Inercial (Norma)", use_container_width=True):
-            st.session_state.active_module = "inertial_rec"
-
         if st.button("Home", use_container_width=True):
             st.session_state.active_module = "home"
 
+        if st.button("Sensor Inercial Livre", use_container_width=True):
+            st.session_state.active_module = "inertial_rec"
+
+        
     # --- ÁREA PRINCIPAL (onde o gráfico vai aparecer) ---
     with col2:
         if st.session_state.active_module == "home":
