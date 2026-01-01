@@ -25,7 +25,7 @@ def main():
             st.info("Escolha um módulo no painel à esquerda.")
 
         elif st.session_state.active_module == "inertial_rec":
-            inertial_file.render()  # renderiza o módulo DENTRO da interface principal
+            inertial_file.render()
 
 if __name__ == "__main__":
     main()
