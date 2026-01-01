@@ -3,6 +3,25 @@ import inertial_file  # segundo arquivo
 
 def main():
     st.set_page_config(page_title="Momentum Web", layout="wide")
+
+    st.markdown(
+    """
+    <style>
+    /* Remove padding padrão do Streamlit */
+    .block-container {
+        padding-top: 0rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    /* Remove margem extra do body */
+    body {
+        margin: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
     
     st.image("mweb.png",use_container_width=False
     )
