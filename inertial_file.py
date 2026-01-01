@@ -135,46 +135,17 @@ def render():
     y = y[valid].to_numpy(float)
     z = z[valid].to_numpy(float)
 
-    # Configuração de tempo
-    st.markdown("### Configuração")
-    colA, colB = st.columns(2)
-    with colA:
-        time_unit = st.selectbox("Unidade do tempo", ["ms", "s", "frames"], index=0)
-    with colB:
-        fps = None
-        if time_unit == "frames":
-            fps = st.number_input("FPS (para frames → segundos)", min_value=1.0, max_value=1000.0, value=30.0, step=1.0)
-
-    if time_unit == "ms":
-        t_sec = t / 1000.0
-    elif time_unit == "s":
-        t_sec = t
-    else:  # frames
-        t_sec = t / float(fps)
+    
+    t_sec = t / 1000.0
 
     # Norma
     norm = np.sqrt(x * x + y * y + z * z)
 
-    # Downsample para mobile
-    st.markdown("### Plot")
-    max_points = st.slider("Máximo de pontos no gráfico (recomendado para celular)", 500, 20000, 5000, step=500)
 
-    n = len(t_sec)
-    if n > max_points:
-        step = int(np.ceil(n / max_points))
-        t_plot = t_sec[::step]
-        norm_plot = norm[::step]
-    else:
-        t_plot = t_sec
-        norm_plot = norm
+    t_plot = t_sec
+    norm_plot = norm
 
     plot_df = pd.DataFrame({"Tempo (s)": t_plot, "Norma": norm_plot})
     st.line_chart(plot_df, x="Tempo (s)", y="Norma", use_container_width=True)
 
-    # Resumo
-    st.caption(f"Válidos: {n} | Plotados: {len(norm_plot)}")
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Média", f"{float(np.mean(norm)):.4f}")
-    c2.metric("RMS", f"{float(np.sqrt(np.mean(norm**2))):.4f}")
-    c3.metric("Máx", f"{float(np.max(norm)):.4f}")
-    c4.metric("Mín", f"{float(np.min(norm)):.4f}")
+    
