@@ -22,7 +22,7 @@ def main():
     # --- ÁREA PRINCIPAL (onde o gráfico vai aparecer) ---
     with col2:
         if st.session_state.active_module == "home":
-            st.info("Escolha um módulo no painel à esquerda.")
+            st.info("Bem-vindo Momentum Web")
 
         elif st.session_state.active_module == "inertial_rec":
             inertial_file.render()
