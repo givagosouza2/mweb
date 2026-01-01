@@ -12,7 +12,7 @@ def main():
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        st.image("assets/gyro.png", width=220)
+        st.image("b1.png", width=220)
         if st.button("Sensor Inercial (Norma)", use_container_width=True):
             st.session_state.active_module = "gyro"
 
