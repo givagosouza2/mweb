@@ -3,7 +3,7 @@ import inertial_file  # segundo arquivo
 
 def main():
     st.set_page_config(page_title="Momentum Web", layout="wide")
-    st.title("Momentum Web, aplicação Web para o Momentum Sensors")
+    st.title("Momentum Web, uma aplicação Web para o Momentum Sensors")
 
     if "active_module" not in st.session_state:
         st.session_state.active_module = "home"
