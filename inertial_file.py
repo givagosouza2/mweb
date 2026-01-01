@@ -167,7 +167,8 @@ def render():
         text="Sinais",
         font=dict(color="black", size=14)
     ))
-    
+    fig.update_xaxes(showgrid=True)
+    fig.update_yaxes(showgrid=True)
     st.plotly_chart(fig, use_container_width=True)    
 
     
