@@ -18,7 +18,7 @@ def main():
 
     with col1:
         # Troque pelo caminho da sua imagem (ex.: assets/gyro.png)
-        if image_button("b1.png", "Abrir módulo Gyro (importar arquivo)", "btn_gyro"):
+        if image_button("b1.png", "Registro inercial livre", "btn_gyro"):
             # IMPORTA o segundo arquivo SOMENTE quando clicar
             mod = importlib.import_module("inertial_file")  # <-- nome do arquivo .py (sem .py)
             mod.run()  # função do segundo arquivo
