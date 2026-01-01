@@ -125,7 +125,7 @@ def render():
     
     t_sec = t / 1000.0
 
-    plot1, plot2, plot3 = st.cols(3)
+    plot1, plot2, plot3 = st.columns(3)
     with plot1:
         plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": x})
         st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)
