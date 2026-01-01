@@ -90,17 +90,19 @@ def run():
     # --- cálculo da norma ---
     norm = np.sqrt(x**2 + y**2 + z**2)
 
-    # --- plot ---
     st.subheader("Norma √(X² + Y² + Z²) em função do tempo")
 
-    fig, ax = plt.subplots(figsize=(8, 4))
-    ax.plot(t, norm, linewidth=1.5)
-    ax.set_xlabel("Tempo (s)" if time_in_ms else "Tempo")
-    ax.set_ylabel("Norma")
-    ax.grid(True, alpha=0.3)
-
-    st.pyplot(fig, use_container_width=True)
-
+    plot_df = pd.DataFrame({
+        "Tempo": t,
+        "Norma": norm
+    })
+    
+    st.line_chart(
+        plot_df,
+        x="Tempo",
+        y="Norma",
+        use_container_width=True
+    )
     # --- métricas rápidas ---
     st.subheader("Resumo quantitativo")
     st.metric("Amostras", len(norm))
