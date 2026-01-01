@@ -125,14 +125,15 @@ def render():
     
     t_sec = t / 1000.0
 
-    # Norma
-    norm = np.sqrt(x * x + y * y + z * z)
-
-
-    t_plot = t_sec
-    norm_plot = norm
-
-    plot_df = pd.DataFrame({"Tempo (s)": t_plot, "Norma": norm_plot})
-    st.line_chart(plot_df, x="Tempo (s)", y="Norma", use_container_width=True)
+    plot1, plot2, plot3 = st.cols(3)
+    with plot1:
+        plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": x})
+        st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)
+    with plot2:
+        plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": y})
+        st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)    
+    with plot3:
+        plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": z})
+        st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)    
 
     
