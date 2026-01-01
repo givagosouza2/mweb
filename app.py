@@ -9,6 +9,10 @@ def main():
         st.session_state.active_module = "home"
 
     # --- HUB com botão (imagem + botão) ---
+    st.image(
+        "mweb.png",
+        use_container_width=True
+    )
     col1, col2 = st.columns([0.4, 2])
 
     with col1:
@@ -20,6 +24,7 @@ def main():
 
         
     # --- ÁREA PRINCIPAL (onde o gráfico vai aparecer) ---
+    
     with col2:
         if st.session_state.active_module == "home":
             st.info("Bem-vindo Momentum Web")
