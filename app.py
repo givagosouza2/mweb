@@ -2,7 +2,7 @@ import streamlit as st
 import inertial_file
 
 def main():
-    st.set_page_config(page_title="Momentum Web", layout="wide")
+    st.set_page_config(page_title="Momentum Web app", layout="wide")
 
     st.markdown(
         """
