@@ -3,16 +3,14 @@ import inertial_file  # segundo arquivo
 
 def main():
     st.set_page_config(page_title="Momentum Web", layout="wide")
-    st.title("Momentum Web, uma aplicação Web para o Momentum Sensors")
+    
+    st.image("mweb.png",use_container_width=False
+    )
 
     if "active_module" not in st.session_state:
         st.session_state.active_module = "home"
 
     # --- HUB com botão (imagem + botão) ---
-    st.image(
-        "mweb.png",
-        use_container_width=True
-    )
     col1, col2 = st.columns([0.4, 2])
 
     with col1:
