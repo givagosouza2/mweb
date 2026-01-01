@@ -5,7 +5,7 @@ def image_button(img_path: str, label: str, key: str) -> bool:
     """
     "Botão com imagem" no Streamlit: mostra a imagem e um botão logo abaixo.
     """
-    st.image(img_path, use_container_width=True)
+    st.image(img_path, use_container_width=True, width=50)
     return st.button(label, key=key, use_container_width=True)
 
 def main():
