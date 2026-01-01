@@ -133,21 +133,40 @@ def render():
     
     fig.update_layout(
     xaxis=dict(
-        title="Tempo (s)",
+        title=dict(
+            text="Tempo (s)",
+            font=dict(color="black", size=16)
+        ),
         showline=True,
         linecolor="black",
         linewidth=2,
-        mirror=True      # opcional: desenha linha também no topo
-    ),
+        mirror=True,
+        tickfont=dict(
+            color="black",
+            size=14
+        ),
+        ticks="outside",
+        tickwidth=2,
+        tickcolor="black"),
     yaxis=dict(
-        title="Amplitude",
+        title=dict(
+            text="Amplitude",
+            font=dict(color="black", size=16)),
         showline=True,
         linecolor="black",
         linewidth=2,
-        mirror=True      # opcional: desenha linha também à direita
-    ),
-    legend_title="Sinais"
-    )
+        mirror=True,
+        tickfont=dict(
+            color="black",
+            size=14
+        ),
+        ticks="outside",
+        tickwidth=2,
+        tickcolor="black"),
+    legend_title=dict(
+        text="Sinais",
+        font=dict(color="black", size=14)
+    ))
     
     st.plotly_chart(fig, use_container_width=True)    
 
