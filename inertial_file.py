@@ -132,9 +132,21 @@ def render():
     fig.add_trace(go.Scatter(x=t_sec, y=z, name="Z"))
     
     fig.update_layout(
-        xaxis_title="Tempo (s)",
-        yaxis_title="Amplitude",
-        legend_title="Sinais"
+    xaxis=dict(
+        title="Tempo (s)",
+        showline=True,
+        linecolor="black",
+        linewidth=2,
+        mirror=True      # opcional: desenha linha também no topo
+    ),
+    yaxis=dict(
+        title="Amplitude",
+        showline=True,
+        linecolor="black",
+        linewidth=2,
+        mirror=True      # opcional: desenha linha também à direita
+    ),
+    legend_title="Sinais"
     )
     
     st.plotly_chart(fig, use_container_width=True)    
