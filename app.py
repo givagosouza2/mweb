@@ -1,5 +1,5 @@
 import streamlit as st
-import gyro_module  # segundo arquivo
+import inertial_file  # segundo arquivo
 
 def main():
     st.set_page_config(page_title="Momentum Web", layout="wide")
