@@ -2,6 +2,7 @@ import io
 import numpy as np
 import pandas as pd
 import streamlit as st
+import plotly.graph_objects as go
 
 
 # -----------------------------
@@ -126,14 +127,18 @@ def render():
     t_sec = t / 1000.0
 
     plot1, plot2, plot3 = st.columns(3)
-    with plot1:
-        plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": x})
-        st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)
-    with plot2:
-        plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": y})
-        st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)    
-    with plot3:
-        plot_df = pd.DataFrame({"Tempo (s)": t_sec, "onda": z})
-        st.line_chart(plot_df, x="Tempo (s)", y="onda", use_container_width=True)    
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=t_plot, y=x_plot, name="X"))
+    fig.add_trace(go.Scatter(x=t_plot, y=y_plot, name="Y"))
+    fig.add_trace(go.Scatter(x=t_plot, y=z_plot, name="Z"))
+    fig.add_trace(go.Scatter(x=t_plot, y=norm_plot, name="Norma", line=dict(width=3)))
+    
+    fig.update_layout(
+        xaxis_title="Tempo (s)",
+        yaxis_title="Amplitude",
+        legend_title="Sinais"
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)    
 
     
