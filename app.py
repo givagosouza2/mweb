@@ -119,7 +119,7 @@ def main():
     # MENU
     # =========================
     with col1:
-        st.markdown('<div class="mw-menu-card">', unsafe_allow_html=True)
+        #st.markdown('<div class="mw-menu-card">', unsafe_allow_html=True)
         st.markdown('<div class="mw-side-title">Menu</div>', unsafe_allow_html=True)
 
         def menu_button(label, module_key):
