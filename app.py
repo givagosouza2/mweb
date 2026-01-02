@@ -35,7 +35,7 @@ def main():
     )
 
     st.markdown('<div class="mw-banner">', unsafe_allow_html=True)
-    st.image("mweb.png", width='stretch')
+    st.image("mwebv2.png", width='stretch')
     st.markdown("</div>", unsafe_allow_html=True)
 
     # Padding só para o conteúdo (menu e páginas)
