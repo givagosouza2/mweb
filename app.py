@@ -1,8 +1,13 @@
 import streamlit as st
 import inertial_file
-# imports futuros (crie depois os arquivos)
+# Módulos futuros (criar depois)
 # import static_balance
 # import tug_test
+# import gait_4m
+# import finger_tapping
+# import hand_tremor
+# import jump_test
+# import y_test
 
 
 def main():
@@ -50,12 +55,13 @@ def main():
             color: #c00000;
             border: 2px solid #1f4aff;
             border-radius: 12px;
-            padding: 0.75rem 0.9rem;
-            font-size: 1.0rem;
+            padding: 0.7rem 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             text-align: left;
             transition: all 0.18s ease-in-out;
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            margin-bottom: 0.4rem;
         }
 
         .mw-btn-wrap div.stButton > button:hover {
@@ -107,7 +113,7 @@ def main():
     if "active_module" not in st.session_state:
         st.session_state.active_module = "home"
 
-    col1, col2 = st.columns([0.6, 2.0], gap="large")
+    col1, col2 = st.columns([0.65, 2.0], gap="large")
 
     # =========================
     # MENU
@@ -127,10 +133,16 @@ def main():
                 st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
+        # Botões
         menu_button("🏠 Home", "home")
         menu_button("📱 Sensor Inercial", "inertial_rec")
         menu_button("⚖️ Equilíbrio Estático", "static_balance")
         menu_button("🚶 Timed Up and Go (TUG)", "tug")
+        menu_button("🚶‍♂️ Caminhada 4 m", "gait_4m")
+        menu_button("👆 Finger Tapping Test", "finger_tapping")
+        menu_button("✋ Tremor de Mão", "hand_tremor")
+        menu_button("🦘 Salto", "jump")
+        menu_button("⭐ Teste Y", "y_test")
 
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -141,7 +153,7 @@ def main():
         if st.session_state.active_module == "home":
             st.markdown("### Bem-vindo ao Momentum Web")
             st.info(
-                "Selecione um módulo no menu à esquerda para iniciar a avaliação."
+                "Selecione um teste no menu à esquerda para iniciar a avaliação."
             )
 
         elif st.session_state.active_module == "inertial_rec":
@@ -150,14 +162,23 @@ def main():
         elif st.session_state.active_module == "static_balance":
             st.warning("Módulo de Equilíbrio Estático em desenvolvimento.")
 
-            # quando existir:
-            # static_balance.render()
-
         elif st.session_state.active_module == "tug":
-            st.warning("Módulo Timed Up and Go em desenvolvimento.")
+            st.warning("Módulo Timed Up and Go (TUG) em desenvolvimento.")
 
-            # quando existir:
-            # tug_test.render()
+        elif st.session_state.active_module == "gait_4m":
+            st.warning("Módulo Caminhada de 4 m em desenvolvimento.")
+
+        elif st.session_state.active_module == "finger_tapping":
+            st.warning("Módulo Finger Tapping Test em desenvolvimento.")
+
+        elif st.session_state.active_module == "hand_tremor":
+            st.warning("Módulo Tremor de Mão em desenvolvimento.")
+
+        elif st.session_state.active_module == "jump":
+            st.warning("Módulo Salto em desenvolvimento.")
+
+        elif st.session_state.active_module == "y_test":
+            st.warning("Módulo Teste Y em desenvolvimento.")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
