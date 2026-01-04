@@ -107,6 +107,7 @@ def render():
         st.error(f"Erro ao ler/processar o arquivo: {e}")
         return
 
+    detrend_apply = st.checkbox("Aplicar detrend",False)
     # Conversão numérica (agora por colunas nomeadas, já limpas)
     t = _to_float_series(df["Tempo"])
     x = _to_float_series(df["X"])
@@ -122,6 +123,8 @@ def render():
     x = x[valid].to_numpy(float)
     y = y[valid].to_numpy(float)
     z = z[valid].to_numpy(float)
+
+    
 
     
     t_sec = t / 1000.0
