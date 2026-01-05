@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
+import from scipy.signal import detrend, butter, filtfilt
+
 
 
 # -----------------------------
@@ -108,6 +110,8 @@ def render():
         return
 
     detrend_apply = st.checkbox("Aplicar detrend",False)
+    low_pass_filter = st.checkbox("Aplicar filtragem passa-baixa",False)
+    
     # Conversão numérica (agora por colunas nomeadas, já limpas)
     t = _to_float_series(df["Tempo"])
     x = _to_float_series(df["X"])
@@ -124,8 +128,26 @@ def render():
     y = y[valid].to_numpy(float)
     z = z[valid].to_numpy(float)
 
-    
-
+    if detrend_apply:
+        x = detrend(x)
+        y = detrend(y)
+        z = detrend(z)
+    if low_pass_filter:
+        dt = np.diff(t)
+        fs_mean = 1 / np.mean(dt)
+        nyq = 0.5 * fs_mean
+        cutoff = st.number_input(
+            "Cutoff (Hz)",
+            min_value=0.1,
+            max_value=float(max(0.11, nyq - 0.01)),
+            value=float(min(10.0, nyq - 0.01)),
+            step=0.1
+        )
+        wn = cutoff_hz / nyq
+        b, a = butter(order, wn, btype="low", analog=False)
+        x = filtfilt(b, a, x)
+        y = filtfilt(b, a, y)
+        z = filtfilt(b, a, z)
     
     t_sec = t / 1000.0
 
