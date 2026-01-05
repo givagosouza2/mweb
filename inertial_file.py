@@ -128,12 +128,14 @@ def render():
     y = y[valid].to_numpy(float)
     z = z[valid].to_numpy(float)
 
+    t_sec = t / 1000.0
+
     if detrend_apply:
         x = detrend(x)
         y = detrend(y)
         z = detrend(z)
     if low_pass_filter:
-        dt = np.diff(t)
+        dt = np.diff(t_sec)
         fs_mean = 1 / np.mean(dt)
         nyq = 0.5 * fs_mean
         cutoff = st.number_input(
@@ -149,7 +151,7 @@ def render():
         y = filtfilt(b, a, y)
         z = filtfilt(b, a, z)
     
-    t_sec = t / 1000.0
+  
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=t_sec, y=x, name="X"))
