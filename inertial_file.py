@@ -137,6 +137,7 @@ def render():
     if low_pass_filter:
         dt = np.diff(t_sec)
         fs_mean = 1 / np.mean(dt)
+        st.text(fs_mean)
         nyq = 0.5 * fs_mean
         cutoff = st.number_input(
             "Cutoff (Hz)",
