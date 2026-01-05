@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
-import from scipy.signal import detrend, butter, filtfilt
+from scipy.signal import detrend, butter, filtfilt
 
 
 
