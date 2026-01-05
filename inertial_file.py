@@ -146,7 +146,7 @@ def render():
             value=float(min(10.0, nyq - 0.01)),
             step=0.1
         )
-        wn = cutoff_hz / nyq
+        wn = cutoff / nyq
         b, a = butter(order, wn, btype="low", analog=False)
         x = filtfilt(b, a, x)
         y = filtfilt(b, a, y)
