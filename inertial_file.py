@@ -138,7 +138,7 @@ def render():
         nyq = 0.5 * fs_mean
         cutoff = st.number_input(
             "Cutoff (Hz)",
-            min_value=0.1,
+            min_value=0.0,
             max_value=float(max(0.11, nyq - 0.01)),
             value=float(min(10.0, nyq - 0.01)),
             step=0.1
